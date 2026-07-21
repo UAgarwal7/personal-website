@@ -1,9 +1,9 @@
 import { projects } from '../content/site'
 import { Section } from './Section'
 
-export function Work() {
+export function Projects() {
   return (
-    <Section id="work" label="Selected work">
+    <Section id="projects" label="Projects">
       <ul className="flex flex-col gap-y-9">
         {projects.map((project) => (
           <li key={project.name}>
