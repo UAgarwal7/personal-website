@@ -32,14 +32,11 @@ export type Project = {
 
 export const profile = {
   name: 'Utsav Agarwal',
-  roleTag: 'AI security · Michigan',
-
-  // TODO: revisit. The "build agentic AI systems" half is not evidenced by the
-  // projects on this page — it was written when Ante was going to be included.
-  headline: 'I build agentic AI systems, then take them apart.',
-
-  intro:
-    'I study computer science at the University of Michigan and research AI security at Faberlens AI, where I replicate agent vulnerabilities against production systems. Before that I spent my time on competitive CTFs and robotics — most of my work sits somewhere between security and real-time systems.',
+  /**
+   * With no headline or intro paragraph, this line carries all of the context
+   * a reader gets before the work itself. Keep it concrete.
+   */
+  roleTag: 'AI security research at Faberlens AI · Computer science at Michigan',
 }
 
 /** Rendered as a copy-to-clipboard button rather than a mailto link. */
@@ -78,13 +75,6 @@ export const projects: Project[] = [
     metrics: ['3 navigation methods', '~60 FPS vision loop'],
     stack: 'Python, OpenCV, ESP32, Arduino',
     period: 'Sept — Dec 2025',
-  },
-  {
-    name: 'Battlecode',
-    description:
-      'Designed multi-agent pathfinding for MIT’s annual competition, tuning BFS, Dijkstra and A* to fit inside a hard shared-memory ceiling.',
-    metrics: ['Top 15 of U.S. college teams', '8MB memory limit'],
-    stack: 'Java',
   },
 ]
 

@@ -34,11 +34,19 @@ function CopyEmail() {
         // live region below, which otherwise have no signal the click did
         // anything at all.
         aria-label={`Copy email address, ${email}`}
-        className={`${linkStyle} cursor-pointer text-left`}
+        className="group cursor-pointer text-[0.9375rem] text-muted transition-colors hover:text-ink"
       >
-        {/* Fixed width so the row doesn't reflow when the label changes. */}
-        <span className="inline-block min-w-[3.75rem]">
-          {copied ? 'Copied' : 'Email'}
+        {/* Both labels share one grid cell, so the button is always as wide as
+            the longer word and the row never reflows on click. justify-start
+            keeps each label hugging its own text, so the underline matches the
+            anchors beside it instead of stretching to the cell. */}
+        <span className="inline-grid">
+          <span className="col-start-1 row-start-1 justify-self-start underline decoration-hairline decoration-1 underline-offset-4 transition-colors group-hover:decoration-ink">
+            {copied ? 'Copied' : 'Email'}
+          </span>
+          <span aria-hidden className="col-start-1 row-start-1 invisible">
+            Copied
+          </span>
         </span>
       </button>
       <span aria-live="polite" className="sr-only">
