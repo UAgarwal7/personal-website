@@ -76,6 +76,7 @@ export const projects: Project[] = [
     metrics: ['3 navigation methods', '~60 FPS vision loop'],
     stack: 'Python, OpenCV, ESP32, Arduino',
     period: 'Sept — Dec 2025',
+    href: 'https://github.com/UAgarwal7/pushbulance',
   },
 ]
 
