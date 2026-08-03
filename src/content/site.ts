@@ -67,6 +67,7 @@ export const projects: Project[] = [
       '10 classes',
     ],
     stack: 'Python, PyTorch, YOLOv8',
+    href: 'https://github.com/UAgarwal7/dashcam-perception',
   },
   {
     name: 'PUSHbulance',
