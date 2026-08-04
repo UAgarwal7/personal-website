@@ -6,7 +6,7 @@ export function ProjectsPage() {
   return (
     <PageShell>
       <section>
-        <h2 className="label">All projects</h2>
+        <h2 className="label-notes">All projects</h2>
         <p className="mt-6 max-w-[34rem] text-[1.0625rem] leading-[1.6] text-body">
           Security, machine learning, and real-time systems — the fuller list.
           A few have their own write-ups; the rest link to the code.

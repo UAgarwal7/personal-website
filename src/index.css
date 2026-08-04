@@ -27,6 +27,12 @@
 
   --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* The field-notes meta voice: dates, orgs, tags, section markers. Deliberately
+     a system stack and not a webfont — /mqtt already sets code in system mono,
+     so this matches it and costs no extra network request. */
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
 
   /* No rounded corners anywhere in this design. */
   --radius-xs: 0px;
@@ -77,6 +83,72 @@
   :focus-visible {
     outline: 1.5px solid var(--color-ink);
     outline-offset: 3px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Field notes.
+
+   The engineer's-notebook treatment, scoped to the two rail pages (/ and
+   /projects) by a class on <body> — the long-form write-ups (/dashcam, /mqtt)
+   stay a clean reading column and keep the `label` utility below.
+
+   This knowingly relaxes two of the rules at the top of this file: entries are
+   marked with a hairline rule rather than whitespace alone, and section labels
+   go lowercase mono instead of tracked caps. Both are the point of the
+   direction, not an oversight.
+   --------------------------------------------------------------------------- */
+
+/* Faint dot grid, like engineering paper. Sits on <body> so it spans the full
+   viewport behind the rail, not just the centred content column. */
+body.fieldnotes {
+  background-image: radial-gradient(var(--color-hairline) 0.5px, transparent 0.5px);
+  background-size: 22px 22px;
+}
+
+/* Section marker: `§ experience`. Lowercased in CSS so the content files keep
+   reading as prose ("Experience"), and the writeup pages can keep using the
+   capitalised `label` utility with the same strings. */
+@utility label-notes {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  /* muted, not faint: at this size faint (#888780) is only 3.5:1 and fails AA. */
+  color: var(--color-muted);
+
+  &::before {
+    content: '§ ';
+  }
+}
+
+/* An entry in the notebook: hairline in the margin, content indented off it. */
+@utility notes-entry {
+  border-left: 1px solid var(--color-hairline);
+  padding-left: 1.25rem;
+}
+
+/* The mono meta line above an entry's title — dates, org, category. */
+@utility notes-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* A `>` prompt marker before a line of body copy. The glyph is a list marker
+   carrying no meaning of its own, so faint is fine here where it isn't on text. */
+@utility notes-item {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+
+  &::before {
+    content: '>';
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-faint);
   }
 }
 

@@ -16,7 +16,7 @@ type SectionProps = {
 export function Section({ id, label, children, className = '' }: SectionProps) {
   return (
     <section id={id} className={`py-10 sm:py-14 ${className}`}>
-      <h2 className="label">{label}</h2>
+      <h2 className="label-notes">{label}</h2>
       <div className="mt-6 sm:mt-8">{children}</div>
     </section>
   )
