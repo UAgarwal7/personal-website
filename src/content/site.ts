@@ -28,6 +28,8 @@ export type Project = {
   stack: string
   period?: string
   href?: string
+  /** Surfaced on the homepage teaser; every project shows on /projects. */
+  featured?: boolean
 }
 
 export const profile = {
@@ -56,6 +58,7 @@ export const projects: Project[] = [
     metrics: ['Cross-tenant message disclosure', 'Fixed with a one-line ACL'],
     stack: 'Mosquitto, Docker, security',
     href: '/mqtt',
+    featured: true,
   },
   {
     name: 'MRacing dashboard',
@@ -64,6 +67,7 @@ export const projects: Project[] = [
     metrics: ['~3× faster', '40% less memory', '60+ FPS on a Raspberry Pi'],
     stack: 'C++, Raspberry Pi, CAN bus',
     period: 'Sept 2025 — present',
+    featured: true,
   },
   {
     name: 'dashcam-perception',
@@ -76,6 +80,7 @@ export const projects: Project[] = [
     ],
     stack: 'Python, PyTorch, YOLOv8',
     href: '/dashcam',
+    featured: true,
   },
   {
     name: 'PUSHbulance',

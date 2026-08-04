@@ -12,6 +12,7 @@ export default defineConfig({
       // entries, so the deep-dive ships its own meta tags and link preview.
       input: {
         main: resolve(__dirname, 'index.html'),
+        projects: resolve(__dirname, 'projects.html'),
         dashcam: resolve(__dirname, 'dashcam.html'),
         mqtt: resolve(__dirname, 'mqtt.html'),
       },
