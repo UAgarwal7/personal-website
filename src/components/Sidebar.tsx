@@ -1,11 +1,12 @@
 import { profile } from '../content/site'
 import { LinkRow } from './LinkRow'
 
+// Root-relative hashes so the nav works from subpages (e.g. /projects) too —
+// on the homepage they resolve to same-page smooth-scroll anchors.
 const nav = [
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Education', href: '/#education' },
 ]
 
 /**
