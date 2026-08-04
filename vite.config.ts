@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         dashcam: resolve(__dirname, 'dashcam.html'),
+        mqtt: resolve(__dirname, 'mqtt.html'),
       },
     },
   },

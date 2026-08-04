@@ -50,6 +50,14 @@ export const links: Link[] = [
 
 export const projects: Project[] = [
   {
+    name: 'MQTT tenant isolation',
+    description:
+      'Demonstrated cross-tenant message disclosure on a multi-tenant MQTT broker with authentication but no authorization, then contained it with a default-deny Mosquitto ACL — the same attack, recorded before and after.',
+    metrics: ['Cross-tenant message disclosure', 'Fixed with a one-line ACL'],
+    stack: 'Mosquitto, Docker, security',
+    href: '/mqtt',
+  },
+  {
     name: 'MRacing dashboard',
     description:
       'Reverse-engineered a Python driver dashboard and rebuilt it in C++, pulling live telemetry off the vehicle CAN bus for a Formula SAE team.',
