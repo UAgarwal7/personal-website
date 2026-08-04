@@ -4,7 +4,7 @@ import { email, links } from '../content/site'
 const RESET_MS = 2000
 
 const linkStyle =
-  'text-[0.9375rem] text-muted underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink'
+  'text-[0.9375rem] text-muted underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink'
 
 function CopyEmail() {
   const [copied, setCopied] = useState(false)
@@ -41,7 +41,7 @@ function CopyEmail() {
             keeps each label hugging its own text, so the underline matches the
             anchors beside it instead of stretching to the cell. */}
         <span className="inline-grid">
-          <span className="col-start-1 row-start-1 justify-self-start underline decoration-hairline decoration-1 underline-offset-4 transition-colors group-hover:decoration-ink">
+          <span className="col-start-1 row-start-1 justify-self-start underline decoration-accent decoration-1 underline-offset-4 transition-colors group-hover:decoration-ink">
             {copied ? 'Copied' : 'Email'}
           </span>
           <span aria-hidden className="col-start-1 row-start-1 invisible">

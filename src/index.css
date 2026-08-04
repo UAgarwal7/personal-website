@@ -25,6 +25,15 @@
   /* Hairline */
   --color-hairline: #e3e1db;
 
+  /* The one accent. Aqua, cool against the warm paper — the only hue on the
+     site, and it marks structure only: markers, sidelines, underlines, arrows.
+     ⚠️ 3.2:1 on paper. That clears the 3:1 floor for graphical elements and
+     FAILS the 4.5:1 one for text, so it must never colour a word. Underlines
+     take it via text-decoration-color while the text itself stays ink or muted;
+     the arrows it does colour are paired with a text label that carries the
+     meaning on its own. */
+  --color-accent: #3e97a8;
+
   --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   /* The field-notes meta voice: dates, orgs, tags, section markers. Deliberately
@@ -118,14 +127,18 @@ body.fieldnotes {
   /* muted, not faint: at this size faint (#888780) is only 3.5:1 and fails AA. */
   color: var(--color-muted);
 
+  /* The marker takes the accent; the word stays muted. The § carries no meaning
+     a screen reader needs, so the accent's 3.2:1 is fine on it and would not be
+     on the label text beside it. */
   &::before {
     content: '§ ';
+    color: var(--color-accent);
   }
 }
 
-/* An entry in the notebook: hairline in the margin, content indented off it. */
+/* An entry in the notebook: a sideline in the margin, content indented off it. */
 @utility notes-entry {
-  border-left: 1px solid var(--color-hairline);
+  border-left: 1px solid var(--color-accent);
   padding-left: 1.25rem;
 }
 
@@ -137,8 +150,8 @@ body.fieldnotes {
   color: var(--color-muted);
 }
 
-/* A `>` prompt marker before a line of body copy. The glyph is a list marker
-   carrying no meaning of its own, so faint is fine here where it isn't on text. */
+/* A `>` prompt marker before a line of body copy. A list marker carrying no
+   meaning of its own, which is why it can take the accent. */
 @utility notes-item {
   display: grid;
   grid-template-columns: 1.1rem 1fr;
@@ -148,8 +161,23 @@ body.fieldnotes {
     font-family: var(--font-mono);
     font-size: 0.875rem;
     line-height: 1.6;
-    color: var(--color-faint);
+    color: var(--color-accent);
   }
+}
+
+/* A directional arrow inside a link — "Read the write-up →", "← Back to home".
+   It sits at rest in the accent, then resolves to ink with the rest of the link
+   on hover and on keyboard focus. Written as a descendant rule rather than a
+   utility because the arrow has to react to a state on its parent <a>. */
+.nav-arrow {
+  color: var(--color-accent);
+  transition-property: color;
+  transition-duration: 150ms;
+}
+
+a:hover .nav-arrow,
+a:focus-visible .nav-arrow {
+  color: var(--color-ink);
 }
 
 /* Small tracked-out section label — the one place caps are allowed. */

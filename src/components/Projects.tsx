@@ -11,9 +11,9 @@ export function Projects() {
 
       <a
         href="/projects"
-        className="mt-9 inline-block text-[0.9375rem] text-muted underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+        className="mt-9 inline-block text-[0.9375rem] text-muted underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
       >
-        See all projects →
+        See all projects <span className="nav-arrow">→</span>
       </a>
     </Section>
   )

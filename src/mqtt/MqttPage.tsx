@@ -8,7 +8,7 @@ import {
 } from '../content/mqtt'
 
 const linkStyle =
-  'text-muted underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink'
+  'text-muted underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink'
 
 function Label({ children }: { children: string }) {
   return <h2 className="label">{children}</h2>
@@ -37,7 +37,7 @@ export function MqttPage() {
     <main className="mx-auto w-full max-w-[44rem] px-6 pb-24 sm:px-10">
       <nav className="pt-10 sm:pt-14">
         <a href="/" className={`text-[0.875rem] ${linkStyle}`}>
-          ← Utsav Agarwal
+          <span className="nav-arrow">←</span> Utsav Agarwal
         </a>
       </nav>
 
@@ -206,7 +206,7 @@ export function MqttPage() {
             Recorded demo
           </a>
           <a href="/" className={linkStyle}>
-            ← Back to home
+            <span className="nav-arrow">←</span> Back to home
           </a>
         </div>
       </footer>

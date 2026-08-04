@@ -20,9 +20,9 @@ export function ProjectsPage() {
       <footer className="pt-12 lg:hidden">
         <a
           href="/"
-          className="text-[0.9375rem] text-muted underline decoration-hairline decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+          className="text-[0.9375rem] text-muted underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
         >
-          ← Back to home
+          <span className="nav-arrow">←</span> Back to home
         </a>
       </footer>
     </PageShell>
