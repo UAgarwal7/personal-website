@@ -109,6 +109,9 @@ export function CursorField() {
     <div
       ref={ref}
       aria-hidden
+      // Named so the print stylesheet can drop it — it isn't a child of <body>,
+      // so a structural selector doesn't reach it.
+      className="cursor-field"
       style={{
         position: 'fixed',
         inset: 0,

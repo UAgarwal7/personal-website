@@ -52,7 +52,7 @@ export function ProjectList({ items }: { items: Project[] }) {
             {internal ? (
               <a
                 href={project.href}
-                className="mt-2 inline-block text-[0.875rem] text-muted underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+                className="print-nourl mt-2 inline-block text-[0.875rem] text-muted underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
               >
                 Read the write-up <span className="nav-arrow">→</span>
               </a>

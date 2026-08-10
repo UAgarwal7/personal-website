@@ -34,7 +34,7 @@ function CopyEmail() {
         // live region below, which otherwise have no signal the click did
         // anything at all.
         aria-label={`Copy email address, ${email}`}
-        className="group cursor-pointer text-[0.9375rem] text-muted transition-colors hover:text-ink"
+        className="group cursor-pointer text-[0.9375rem] text-muted transition-colors hover:text-ink print:hidden"
       >
         {/* Both labels share one grid cell, so the button is always as wide as
             the longer word and the row never reflows on click. justify-start
@@ -49,6 +49,13 @@ function CopyEmail() {
           </span>
         </span>
       </button>
+      {/* On paper there is nothing to click, so the button is replaced by the
+          address itself — otherwise a printed copy says "Email" and gives no
+          way to reach him. */}
+      <span aria-hidden className="hidden text-[0.9375rem] print:inline">
+        {email}
+      </span>
+
       <span aria-live="polite" className="sr-only">
         {copied ? `Copied ${email} to clipboard` : ''}
       </span>

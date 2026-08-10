@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './fonts.css';
 
 /* ---------------------------------------------------------------------------
    Design tokens.
@@ -54,6 +55,14 @@
   --radius-4xl: 0px;
 }
 
+/* Cross-document transitions. Each page is its own document in this MPA, so a
+   click to /mqtt is a full navigation and flashes white by default. This makes
+   same-origin navigations cross-fade instead. Ignored where unsupported, and
+   suppressed under reduced motion below. */
+@view-transition {
+  navigation: auto;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -62,6 +71,14 @@
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+
+    /* Cut the page cross-fade too — a navigation should not animate for someone
+       who has asked the system for less motion. */
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
     }
   }
 
@@ -129,9 +146,14 @@ body.fieldnotes {
 
   /* The marker takes the accent; the word stays muted. The § carries no meaning
      a screen reader needs, so the accent's 3.2:1 is fine on it and would not be
-     on the label text beside it. */
+     on the label text beside it.
+
+     The `/ ''` is the generated-content ALT TEXT: it empties the marker's
+     accessible name, so the heading announces as "experience" rather than
+     "section sign experience". Without it the glyph lands in the a11y tree —
+     verified in Chrome's tree, not assumed. Keep it on every decorative marker. */
   &::before {
-    content: '§ ';
+    content: '§ ' / '';
     color: var(--color-accent);
   }
 }
@@ -156,8 +178,10 @@ body.fieldnotes {
   display: grid;
   grid-template-columns: 1.1rem 1fr;
 
+  /* Alt text emptied — see label-notes. Otherwise every bullet is announced
+     with a leading "greater than". */
   &::before {
-    content: '>';
+    content: '>' / '';
     font-family: var(--font-mono);
     font-size: 0.875rem;
     line-height: 1.6;
@@ -188,4 +212,136 @@ a:focus-visible .nav-arrow {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Print.
+
+   "The site is the resume" — so Cmd+P has to produce one. On paper the screen
+   design actively works against that: the dot grid and accent cost ink and say
+   nothing, the sticky rail fragments across pages, and a link is just text
+   unless its URL is spelled out.
+
+   Everything here is print-only. The screen design is untouched.
+   --------------------------------------------------------------------------- */
+
+@media print {
+  @page {
+    margin: 1.6cm;
+  }
+
+  html {
+    font-size: 11.5pt;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Texture is ink with no information in it. */
+  body.fieldnotes {
+    background-image: none;
+  }
+
+  /* The cursor field has nothing to follow on paper. */
+  .cursor-field {
+    display: none !important;
+  }
+
+  /* Unstick the rail and let it sit as a header above the content. A printed
+     page has no viewport to pin to, and a sticky full-height column leaves a
+     blank first sheet. */
+  header {
+    position: static !important;
+    height: auto !important;
+    display: block !important;
+    padding: 0 0 0.6cm !important;
+  }
+
+  /* Single column, full width, regardless of the paper's CSS pixel width. */
+  .lg\:grid {
+    display: block !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  /* Accent is a screen device; on paper it turns grey and costs colour ink. */
+  .label-notes::before,
+  .notes-item::before,
+  .nav-arrow {
+    color: #000 !important;
+  }
+
+  .notes-entry {
+    border-left-color: #999 !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration-color: #999 !important;
+  }
+
+  /* An entry split across a page break is much harder to scan. Note this is
+     deliberately NOT applied to `section`: a whole section is taller than the
+     space usually left on a sheet, so avoiding breaks inside it pushes every
+     section to a fresh page and prints a mostly-empty first one. */
+  li,
+  .notes-entry {
+    break-inside: avoid;
+  }
+
+  /* Screen spacing is generous because scrolling is free. Paper isn't. */
+  section {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* A printed link is a dead end without its destination, so spell it out.
+     Internal hrefs get the host prepended — a bare "/mqtt" on paper is useless,
+     but "utsavagarwal.me/mqtt" is something a reader can actually type. */
+  a[href^='http']::after,
+  a[href^='/']::after {
+    font-size: 0.8em;
+    color: #555;
+    word-break: break-all;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')' / '';
+  }
+
+  a[href^='/']::after {
+    content: ' (utsavagarwal.me' attr(href) ')' / '';
+  }
+
+  /* The name links home; under it that reads better as a plain site line than
+     as a parenthesised root path. */
+  h1 a[href^='/']::after {
+    content: ' · utsavagarwal.me' / '';
+  }
+
+  /* Navigation is meaningless on paper. */
+  nav[aria-label='Sections'] {
+    display: none !important;
+  }
+
+  /* The project title already prints its URL; the read-more link beneath it
+     would print the same one again. */
+  .print-nourl::after {
+    content: none !important;
+  }
+
+  /* Contact is a mobile-only section, and print uses the narrow layout — but
+     the header has already printed the same three links. */
+  #contact {
+    display: none !important;
+  }
 }
