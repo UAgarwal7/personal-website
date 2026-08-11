@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Metadata Mirage — Utsav Agarwal</title>
+    <meta
+      name="description"
+      content="An intentionally vulnerable AWS lab that chains a web-app SSRF into instance-credential theft and a single-API-call privilege escalation to administrator — and the one flag (enforcing IMDSv2) that severs the chain."
+    />
+    <meta name="author" content="Utsav Agarwal" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Metadata Mirage — Utsav Agarwal" />
+    <meta
+      property="og:description"
+      content="SSRF to AWS administrator via a single self-referential IAM permission — and the one instance-metadata flag that kills the whole chain. Same attack, recorded before and after."
+    />
+    <meta property="og:url" content="https://utsavagarwal.me/mirage" />
+    <meta property="og:image" content="https://utsavagarwal.me/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://utsavagarwal.me/og.png" />
+
+    <!-- Fonts are self-hosted (see src/fonts.css). Preloaded because they sit on
+         the critical path for first paint and are discovered late, inside CSS. -->
+    <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/mirage/main.tsx"></script>
+  </body>
+</html>

@@ -61,6 +61,15 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    name: 'Metadata Mirage',
+    description:
+      'Chained a web-app SSRF into AWS instance-credential theft and a single-API-call privilege escalation to administrator, then severed the whole chain with one instance-metadata flag — enforcing IMDSv2. Reproducible end to end with Terraform.',
+    metrics: ['SSRF to AWS administrator', 'Killed by one IMDSv2 flag'],
+    stack: 'AWS, IAM, Terraform, cloud security',
+    href: '/mirage',
+    featured: true,
+  },
+  {
     name: 'MRacing dashboard',
     description:
       'Reverse-engineered a Python driver dashboard and rebuilt it in C++, pulling live telemetry off the vehicle CAN bus for a Formula SAE team.',
