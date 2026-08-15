@@ -35,3 +35,6 @@ dist-ssr
 
 # Internal build briefs — kept locally, never published
 writeups/
+
+# Booth/demo artifacts generated from the projects — large PNGs, not site content
+demo-assets/
