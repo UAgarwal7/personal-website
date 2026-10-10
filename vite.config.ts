@@ -16,6 +16,7 @@ export default defineConfig({
         dashcam: resolve(__dirname, 'dashcam.html'),
         mqtt: resolve(__dirname, 'mqtt.html'),
         mirage: resolve(__dirname, 'mirage.html'),
+        nobadgeactors: resolve(__dirname, 'nobadgeactors.html'),
         // Vercel serves 404.html from the output root for unmatched routes.
         notFound: resolve(__dirname, '404.html'),
       },

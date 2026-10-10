@@ -5,6 +5,7 @@ import { ProjectsPage } from './projects/ProjectsPage'
 import { DashcamPage } from './dashcam/DashcamPage'
 import { MqttPage } from './mqtt/MqttPage'
 import { MiragePage } from './mirage/MiragePage'
+import { NoBadgeActorsPage } from './nobadgeactors/NoBadgeActorsPage'
 import { NotFoundPage } from './notfound/NotFoundPage'
 
 // Build-time prerender: scripts/prerender.mjs renders each page into its built
@@ -17,6 +18,7 @@ const pages: Record<string, ComponentType> = {
   'dashcam.html': DashcamPage,
   'mqtt.html': MqttPage,
   'mirage.html': MiragePage,
+  'nobadgeactors.html': NoBadgeActorsPage,
   '404.html': NotFoundPage,
 }
 

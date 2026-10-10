@@ -38,7 +38,7 @@ export const profile = {
    * With no headline or intro paragraph, this line carries all of the context
    * a reader gets before the work itself. Keep it concrete.
    */
-  roleTag: 'AI security research at Faberlens AI · Computer science at Michigan',
+  roleTag: 'Computer science at the University of Michigan',
 }
 
 /** Rendered as a copy-to-clipboard button rather than a mailto link. */
@@ -52,13 +52,22 @@ export const links: Link[] = [
 
 export const projects: Project[] = [
   {
+    name: 'No Badge Actors',
+    description:
+      "A hardware security key for payments, built on DEF CON badges. It checks who you're paying, that they're standing in front of you, and what you're actually signing, before a button press releases the signature.",
+    metrics: ['Won Best Use of Solana', 'Won the Judged by an LLM track', 'MHacks 2026'],
+    stack: 'Solana, Ed25519, ESP32 / ESP-NOW, Node.js, React, TimescaleDB, Capital One Nessie',
+    period: 'Oct 2026',
+    href: '/nobadgeactors',
+    featured: true,
+  },
+  {
     name: 'MQTT tenant isolation',
     description:
       'Demonstrated cross-tenant message disclosure on a multi-tenant MQTT broker with authentication but no authorization, then contained it with a default-deny Mosquitto ACL — the same attack, recorded before and after.',
     metrics: ['Cross-tenant message disclosure', 'Fixed with a one-line ACL'],
     stack: 'Mosquitto, Docker, security',
     href: '/mqtt',
-    featured: true,
   },
   {
     name: 'Metadata Mirage',
@@ -75,7 +84,7 @@ export const projects: Project[] = [
       'Reverse-engineered a Python driver dashboard and rebuilt it in C++, pulling live telemetry off the vehicle CAN bus for a Formula SAE team.',
     metrics: ['~3× faster', '40% less memory', '60+ FPS on a Raspberry Pi'],
     stack: 'C++, Raspberry Pi, CAN bus',
-    period: 'Sept 2025 — present',
+    period: 'Sept 2025 — Apr 2026',
     featured: true,
   },
   {
@@ -106,10 +115,10 @@ export const experience: Role[] = [
   {
     organization: 'Faberlens AI',
     title: 'AI security research intern',
-    period: 'May 2026 — present',
+    period: 'May — Aug 2026',
     points: [
-      'Replicate AI agent vulnerabilities previously confined to sandboxes against production-grade MCP servers, including Notion and Google Workspace, demonstrating real-world exploitability across live agentic pipelines.',
-      'Run adversarial behavioral evaluations of agent skills, mapping the security regressions that appear when skills are composed.',
+      'Replicated AI agent vulnerabilities previously confined to sandboxes against production-grade MCP servers, including Notion and Google Workspace, demonstrating real-world exploitability across live agentic pipelines.',
+      'Ran adversarial behavioral evaluations of agent skills, mapping the security regressions that appear when skills are composed.',
     ],
   },
   {
