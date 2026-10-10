@@ -1,10 +1,16 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import '../index.css'
 import { ProjectsPage } from './ProjectsPage'
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!
+const app = (
   <StrictMode>
     <ProjectsPage />
-  </StrictMode>,
+  </StrictMode>
 )
+
+// Built pages arrive prerendered (scripts/prerender.mjs); the dev server serves
+// an empty root, which would fail hydration.
+if (root.hasChildNodes()) hydrateRoot(root, app)
+else createRoot(root).render(app)
